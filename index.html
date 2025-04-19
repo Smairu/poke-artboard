@@ -149,8 +149,8 @@
       transform: translateX(-50%);
       color: #111;
       font-size: 14px;
-      background: rgba(255, 255, 255, 0.6);
-      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1px 3px;
       border-radius: 4px;
       pointer-events: none;
     }
@@ -177,6 +177,43 @@
       Add Background
       <input type="file" id="background-file" accept="image/*" />
     </label>
+    <div style="position: relative;">
+  <button id="add-cover-btn">Add Game Cover</button>
+  <select id="game-select" style="position: absolute; top: 100%; left: 0; display: none; margin-top: 4px;">
+    <option value="">Select a game</option>
+    <option value="red">Pokémon Red</option>
+    <option value="blue">Pokémon Blue</option>
+    <option value="yellow">Pokémon Yellow</option>
+    <option value="gold">Pokémon Gold</option>
+    <option value="silver">Pokémon Silver</option>
+    <option value="crystal">Pokémon Crystal</option>
+    <option value="ruby">Pokémon Ruby</option>
+    <option value="sapphire">Pokémon Sapphire</option>
+    <option value="emerald">Pokémon Emerald</option>
+    <option value="fire_red">Pokémon FireRed</option>
+    <option value="leaf_green">Pokémon LeafGreen</option>
+    <option value="diamond">Pokémon Diamond</option>
+    <option value="pearl">Pokémon Pearl</option>
+    <option value="platinum">Pokémon Platinum</option>
+    <option value="black">Pokémon Black</option>
+    <option value="white">Pokémon White</option>
+    <option value="black_2">Pokémon Black 2</option>
+    <option value="white_2">Pokémon White 2</option>
+    <option value="x">Pokémon X</option>
+    <option value="y">Pokémon Y</option>
+    <option value="omega_ruby">Omega Ruby</option>
+    <option value="alpha_sapphire">Alpha Sapphire</option>
+    <option value="sun">Pokémon Sun</option>
+    <option value="moon">Pokémon Moon</option>
+    <option value="ultra_sun">Ultra Sun</option>
+    <option value="ultra_moon">Ultra Moon</option>
+    <option value="sword">Pokémon Sword</option>
+    <option value="shield">Pokémon Shield</option>
+    <option value="scarlet">Pokémon Scarlet</option>
+    <option value="violet">Pokémon Violet</option>
+  </select>
+</div>
+
 
     <button id="clear-btn">Clear Board</button>
     <button id="download-btn">Download PNG</button>
@@ -199,6 +236,73 @@
     const downloadBtn = document.getElementById("download-btn");
     const clearBtn = document.getElementById("clear-btn");
     const toggleNames = document.getElementById("toggle-names");
+    
+    const coverBtn = document.getElementById("add-cover-btn");
+const gameSelect = document.getElementById("game-select");
+
+const gameCoverUrls = {
+  red: "https://img.pokemondb.net/boxes/red.jpg",
+  blue: "https://img.pokemondb.net/boxes/blue.jpg",
+  yellow: "https://img.pokemondb.net/boxes/yellow.jpg",
+  gold: "https://img.pokemondb.net/boxes/gold.jpg",
+  silver: "https://img.pokemondb.net/boxes/silver.jpg",
+  crystal: "https://img.pokemondb.net/boxes/crystal.jpg",
+  ruby: "https://img.pokemondb.net/boxes/ruby.jpg",
+  sapphire: "https://img.pokemondb.net/boxes/sapphire.jpg",
+  emerald: "https://img.pokemondb.net/boxes/emerald.jpg",
+  fire_red: "https://img.pokemondb.net/boxes/firered.jpg",
+  leaf_green: "https://img.pokemondb.net/boxes/leafgreen.jpg",
+  diamond: "https://img.pokemondb.net/boxes/diamond.jpg",
+  pearl: "https://img.pokemondb.net/boxes/pearl.jpg",
+  platinum: "https://img.pokemondb.net/boxes/platinum.jpg",
+  black: "https://img.pokemondb.net/boxes/black.jpg",
+  white: "https://img.pokemondb.net/boxes/white.jpg",
+  black_2: "https://img.pokemondb.net/boxes/black-2.jpg",
+  white_2: "https://img.pokemondb.net/boxes/white-2.jpg",
+  x: "https://img.pokemondb.net/boxes/x.jpg",
+  y: "https://img.pokemondb.net/boxes/y.jpg",
+  omega_ruby: "https://img.pokemondb.net/boxes/omega-ruby.jpg",
+  alpha_sapphire: "https://img.pokemondb.net/boxes/alpha-sapphire.jpg",
+  sun: "https://img.pokemondb.net/boxes/sun.jpg",
+  moon: "https://img.pokemondb.net/boxes/moon.jpg",
+  ultra_sun: "https://img.pokemondb.net/boxes/ultra-sun.jpg",
+  ultra_moon: "https://img.pokemondb.net/boxes/ultra-moon.jpg",
+  sword: "https://img.pokemondb.net/boxes/sword.jpg",
+  shield: "https://img.pokemondb.net/boxes/shield.jpg",
+  scarlet: "https://img.pokemondb.net/boxes/scarlet.jpg",
+  violet: "https://img.pokemondb.net/boxes/violet.jpg"
+};
+
+coverBtn.addEventListener("click", () => {
+  gameSelect.style.display = gameSelect.style.display === "none" ? "block" : "none";
+});
+
+gameSelect.addEventListener("change", () => {
+  const selected = gameSelect.value;
+  if (!selected || !gameCoverUrls[selected]) return;
+
+  // Remove existing game cover if present
+  const existingCover = artboard.querySelector(".game-cover");
+  if (existingCover) {
+    existingCover.remove();
+  }
+
+  const cover = document.createElement("img");
+  cover.src = gameCoverUrls[selected];
+  cover.style.position = "absolute";
+  cover.style.top = "20px";
+  cover.style.right = "20px";
+  cover.style.height = "200px";
+  cover.style.zIndex = 999;
+  cover.style.boxShadow = "0 0 10px rgba(0,0,0,0.2)";
+  cover.classList.add("pokemon-img", "game-cover"); // <- Added 'game-cover' class for easy reference
+
+  artboard.appendChild(cover);
+  gameSelect.style.display = "none";
+  gameSelect.value = "";
+});
+
+
     const SCALE_FACTOR = 180;
     let currentZIndex = 1;
     let pokemonNames = [];
