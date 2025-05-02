@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f3f4f6;
+      background: #1E201E;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -16,6 +16,7 @@
 
     h1 {
       margin-bottom: 20px;
+  color: white;
     }
 
     #controls {
@@ -40,7 +41,7 @@
       cursor: pointer;
       border: none;
       border-radius: 8px;
-      background-color: #3b82f6;
+      background-color: #1F7D53;
       color: white;
       position: relative;
       overflow: hidden;
@@ -57,14 +58,24 @@
     }
 
     #artboard {
-      position: relative;
-      width: 1440px;
-      height: 1080px;
-      background: white;
-      border: 2px dashed #ccc;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
+     {
+  background-image: url(4.png);
+  background-size: cover;
+  background-position: center;
+}
+  position: relative;
+  width: 1440px;
+  height: 1080px;
+  background: #3C3D37;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 0 0 4px white,     /* Inner white line */
+    0 0 0 8px #1F7D53,   /* Outer green border - Pokémon Blue */
+    0 0 0 12px black;    /* Final black edge for depth */
+  padding: 16px;
+}
+
     }
 
     .pokemon-img {
@@ -218,10 +229,10 @@
     <button id="clear-btn">Clear Board</button>
     <button id="download-btn">Download PNG</button>
 
-    <label style="display: flex; align-items: center; gap: 5px;">
-      <input type="checkbox" id="toggle-names" checked />
-      Show Names
-    </label>
+    <label style="display: flex; align-items: center; gap: 5px; color: white;">
+  <input type="checkbox" id="toggle-names" checked />
+  Show Names
+</label>
   </div>
 
   <div id="artboard"></div>
