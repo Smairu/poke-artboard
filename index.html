@@ -59,9 +59,7 @@
 
     #artboard {
      {
-  background-image: url(4.png);
-  background-size: cover;
-  background-position: center;
+
 }
   position: relative;
   width: 1440px;
@@ -171,6 +169,7 @@
       50% { opacity: 1; transform: translateX(-50%) translateY(-20px); }
       100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
     }
+
   </style>
 </head>
 <body>
@@ -229,10 +228,10 @@
     <button id="clear-btn">Clear Board</button>
     <button id="download-btn">Download PNG</button>
 
-    <label style="display: flex; align-items: center; gap: 5px; color: white;">
-  <input type="checkbox" id="toggle-names" checked />
-  Show Names
-</label>
+    <label style="display: flex; align-items: center; gap: 5px;">
+      <input type="checkbox" id="toggle-names" checked />
+      Show Names
+    </label>
   </div>
 
   <div id="artboard"></div>
