@@ -16,7 +16,7 @@
 
     h1 {
       margin-bottom: 20px;
-  color: white;
+      color: white;
     }
 
     #controls {
@@ -58,21 +58,19 @@
     }
 
     #artboard {
-     {
-
-}
-  position: relative;
-  width: 1440px;
-  height: 1080px;
-  background: white;
-  background-size: cover;
-  background-position: center;
-  box-shadow:
+      position: relative;
+      width: 1440px;
+      height: 1080px;
+      background: white;
+      border: 2px #ccc;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow:
     0 0 0 4px white,     /* Inner white line */
     0 0 0 8px #1F7D53,   /* Outer green border - Pokémon Blue */
     0 0 0 12px black;    /* Final black edge for depth */
   padding: 16px;
-}
 
     }
 
@@ -169,7 +167,6 @@
       50% { opacity: 1; transform: translateX(-50%) translateY(-20px); }
       100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
     }
-
   </style>
 </head>
 <body>
@@ -189,7 +186,7 @@
     </label>
     <div style="position: relative;">
   <button id="add-cover-btn">Add Game Cover</button>
-  <select id="game-select" style="position: absolute; top: 100%; left: 0; display: none; margin-top: 4px;">
+  <select id="game-select" style="position: absolute; top: 80%; left: 0; display: none; margin-top: 10 px;">
     <option value="">Select a game</option>
     <option value="red">Pokémon Red</option>
     <option value="blue">Pokémon Blue</option>
