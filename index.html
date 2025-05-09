@@ -504,11 +504,20 @@ gameSelect.addEventListener("change", () => {
       });
     }
     
-    downloadBtn.addEventListener("click", () => {
-  html2canvas(artboard, { useCORS: true }).then(canvas => {
+    downloadBtn.addEventListener("click", async () => {
+  const images = artboard.querySelectorAll("img");
+
+  await Promise.all(Array.from(images).map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.onload = img.onerror = resolve;
+    });
+  }));
+
+  html2canvas(artboard, { useCORS: true, width: 1440, height: 1080 }).then(canvas => {
     const link = document.createElement("a");
     link.download = "pokemon-artboard.png";
-    link.href = canvas.toDataURL("image/png");
+    link.href = canvas.toDataURL();
     link.click();
   });
 });
