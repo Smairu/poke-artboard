@@ -514,7 +514,7 @@ gameSelect.addEventListener("change", () => {
     });
   }));
 
-  html2canvas(artboard, { useCORS: true, width: 1440, height: 1080 }).then(canvas => {
+  html2canvas(artboard, { useCORS: true,}).then(canvas => {
     const link = document.createElement("a");
     link.download = "pokemon-artboard.png";
     link.href = canvas.toDataURL();
